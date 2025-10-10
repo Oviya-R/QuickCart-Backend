@@ -14,7 +14,6 @@ router.post("/register", async (req, res) => {
     user = new User({ name, email, password });
     await user.save();
 
-    //Create jwt payload
     const payload = { user: { id: user._id, role: user.role } };
 
     //Sign and return the token along with user data
@@ -25,7 +24,6 @@ router.post("/register", async (req, res) => {
       (err, token) => {
         if (err) throw err;
 
-        //Send the user and  token in response
         res.status(201).json({
           user: {
             _id: user._id,

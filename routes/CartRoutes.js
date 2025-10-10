@@ -20,17 +20,16 @@ router.post("/", async (req, res) => {
   let { productId, quantity, size, color, guestId, userId } = req.body;
 
   try {
-    // Ensure quantity is a number
     quantity = Number(quantity);
 
-    // Validate product
+    
     const product = await Product.findById(productId);
     if (!product) return res.status(404).json({ message: "Product not found" });
 
-    // Find cart for user/guest
+    
     let cart = await getCart(userId, guestId);
 
-    // If cart exists → update it
+    
     if (cart) {
       const productIndex = cart.products.findIndex(
         (p) =>
@@ -66,8 +65,8 @@ router.post("/", async (req, res) => {
     } else {
       // Create new cart for guest or user
       const newCart = await Cart.create({
-        user: userId ? userId : undefined, // ✅ use "user" not "userId"
-        guestId: guestId ? guestId : `guest_${Date.now()}`, // ✅ fixed timestamp
+        user: userId ? userId : undefined,  
+        guestId: guestId ? guestId : `guest_${Date.now()}`, 
         products: [
           {
             productId,

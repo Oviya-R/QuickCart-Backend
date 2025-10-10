@@ -12,7 +12,7 @@ const products = [
     category: "Top Wear",
     brand: "Urban Threads",
     sizes: ["S", "M", "L", "XL", "XXL"],
-    colors: ["Red", "Blue", "Yellow"],
+    colors: ["green", "Blue", "Yellow"],
     collections: "Business Casual",
     material: "Cotton",
     gender: "Men",
